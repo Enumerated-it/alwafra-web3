@@ -1,33 +1,11 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import React from 'react';
 
-function App() {
+export default function App() {
   return (
-    <div style={{ 
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      minHeight: '100vh',
-      padding: '2rem',
-      textAlign: 'center',
-      color: 'white'
-    }}>
-      <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>
-        🚀 Alwafra Web3 - Souveraineté Financière
-      </h1>
-      
-      <div style={{ margin: '2rem 0' }}>
-        <ConnectButton />
-      </div>
-      
-      <div style={{
-        background: 'rgba(255, 255, 255, 0.1)',
-        padding: '3rem',
-        borderRadius: '20px',
-        marginTop: '3rem'
-      }}>
-        <h2>✨ Révolution du Paiement Différé</h2>
-        <p>Connectez votre wallet pour activer le système "Pay When You Earn"</p>
-      </div>
+    <div style={{ padding: '2rem', textAlign: 'center' }}>
+      <h1>Alwafra Web3 - Test</h1>
+      <p>Application de test fonctionnelle</p>
+      <p>Serveur Vite en cours d'exécution</p>
     </div>
   );
 }
-
-export default App;

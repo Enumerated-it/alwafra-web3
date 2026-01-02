@@ -1,0 +1,1101 @@
+
+> alwafra-web3@1.0.0 dev
+> vite --host --port 3000 --debug
+
+2026-01-02T10:45:03.634Z vite:config config file loaded in 21.29ms
+2026-01-02T10:45:03.636Z vite:env loading env files: [
+  '/workspaces/alwafra-web3/.env',
+  '/workspaces/alwafra-web3/.env.local',
+  '/workspaces/alwafra-web3/.env.development',
+  '/workspaces/alwafra-web3/.env.development.local'
+]
+2026-01-02T10:45:03.636Z vite:env env files loaded in 0.39ms
+2026-01-02T10:45:03.637Z vite:env using resolved env: {}
+2026-01-02T10:45:03.649Z vite:config using resolved config: {
+  plugins: [
+    'vite:optimized-deps',
+    'vite:watch-package-data',
+    'vite:pre-alias',
+    'alias',
+    'vite:react-babel',
+    'vite:react-refresh',
+    'vite:modulepreload-polyfill',
+    'vite:resolve',
+    'vite:html-inline-proxy',
+    'vite:css',
+    'vite:esbuild',
+    'vite:json',
+    'vite:wasm-helper',
+    'vite:worker',
+    'vite:asset',
+    'vite:wasm-fallback',
+    'vite:define',
+    'vite:css-post',
+    'vite:worker-import-meta-url',
+    'vite:asset-import-meta-url',
+    'vite:dynamic-import-vars',
+    'vite:import-glob',
+    'vite:client-inject',
+    'vite:css-analysis',
+    'vite:import-analysis'
+  ],
+  server: {
+    port: 3000,
+    strictPort: true,
+    host: true,
+    allowedHosts: [],
+    https: undefined,
+    open: false,
+    proxy: undefined,
+    cors: {
+      origin: /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/
+    },
+    headers: {},
+    warmup: { clientFiles: [], ssrFiles: [] },
+    middlewareMode: false,
+    fs: {
+      strict: true,
+      deny: [ '.env', '.env.*', '*.{crt,pem}', '**/.git/**' ],
+      allow: [ '/workspaces/alwafra-web3' ]
+    },
+    preTransformRequests: true,
+    perEnvironmentStartEndDuringDev: false,
+    perEnvironmentWatchChangeDuringDev: false,
+    sourcemapIgnoreList: [Function: isInNodeModules],
+    hmr: { clientPort: 443 }
+  },
+  build: {
+    target: [ 'chrome107', 'edge107', 'firefox104', 'safari16' ],
+    polyfillModulePreload: true,
+    modulePreload: { polyfill: true },
+    outDir: 'dist',
+    assetsDir: 'assets',
+    assetsInlineLimit: 4096,
+    sourcemap: true,
+    terserOptions: {},
+    rollupOptions: { onwarn: [Function: onwarn] },
+    commonjsOptions: { include: [ /node_modules/ ], extensions: [ '.js', '.cjs' ] },
+    dynamicImportVarsOptions: { warnOnError: true, exclude: [ /node_modules/ ] },
+    write: true,
+    emptyOutDir: null,
+    copyPublicDir: true,
+    license: false,
+    manifest: false,
+    lib: false,
+    ssrManifest: false,
+    ssrEmitAssets: false,
+    reportCompressedSize: true,
+    chunkSizeWarningLimit: 500,
+    watch: null,
+    cssCodeSplit: true,
+    minify: 'esbuild',
+    ssr: false,
+    emitAssets: false,
+    createEnvironment: [Function: createEnvironment],
+    cssTarget: [ 'chrome107', 'edge107', 'firefox104', 'safari16' ],
+    cssMinify: true
+  },
+  esbuild: {
+    jsxDev: true,
+    charset: 'utf8',
+    legalComments: 'none',
+    jsx: 'automatic',
+    jsxImportSource: undefined
+  },
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react/jsx-dev-runtime',
+      'react/jsx-runtime'
+    ],
+    exclude: [],
+    needsInterop: [],
+    extensions: [],
+    disabled: undefined,
+    holdUntilCrawlEnd: true,
+    force: false,
+    noDiscovery: false,
+    esbuildOptions: { preserveSymlinks: false, jsx: 'automatic' }
+  },
+  resolve: {
+    externalConditions: [ 'node', 'module-sync' ],
+    extensions: [
+      '.mjs',  '.js',
+      '.mts',  '.ts',
+      '.jsx',  '.tsx',
+      '.json'
+    ],
+    dedupe: [ 'react', 'react-dom' ],
+    noExternal: [],
+    external: [],
+    preserveSymlinks: false,
+    alias: [
+      {
+        find: /^\/?@vite\/env/,
+        replacement: '/@fs/workspaces/alwafra-web3/node_modules/vite/dist/client/env.mjs'
+      },
+      {
+        find: /^\/?@vite\/client/,
+        replacement: '/@fs/workspaces/alwafra-web3/node_modules/vite/dist/client/client.mjs'
+      }
+    ],
+    mainFields: [ 'browser', 'module', 'jsnext:main', 'jsnext' ],
+    conditions: [ 'module', 'browser', 'development|production' ],
+    builtins: []
+  },
+  environments: {
+    client: {
+      define: undefined,
+      resolve: {
+        externalConditions: [ 'node', 'module-sync' ],
+        extensions: [
+          '.mjs',  '.js',
+          '.mts',  '.ts',
+          '.jsx',  '.tsx',
+          '.json'
+        ],
+        dedupe: [ 'react', 'react-dom' ],
+        noExternal: [],
+        external: [],
+        preserveSymlinks: false,
+        alias: [
+          {
+            find: /^\/?@vite\/env/,
+            replacement: '/@fs/workspaces/alwafra-web3/node_modules/vite/dist/client/env.mjs'
+          },
+          {
+            find: /^\/?@vite\/client/,
+            replacement: '/@fs/workspaces/alwafra-web3/node_modules/vite/dist/client/client.mjs'
+          }
+        ],
+        mainFields: [ 'browser', 'module', 'jsnext:main', 'jsnext' ],
+        conditions: [ 'module', 'browser', 'development|production' ],
+        builtins: []
+      },
+      keepProcessEnv: false,
+      consumer: 'client',
+      optimizeDeps: {
+        include: [
+          'react',
+          'react-dom',
+          'react/jsx-dev-runtime',
+          'react/jsx-runtime'
+        ],
+        exclude: [],
+        needsInterop: [],
+        extensions: [],
+        disabled: undefined,
+        holdUntilCrawlEnd: true,
+        force: false,
+        noDiscovery: false,
+        esbuildOptions: { preserveSymlinks: false, jsx: 'automatic' }
+      },
+      dev: {
+        warmup: [],
+        sourcemap: { js: true },
+        sourcemapIgnoreList: [Function: isInNodeModules],
+        preTransformRequests: true,
+        createEnvironment: [Function: defaultCreateClientDevEnvironment],
+        recoverable: true,
+        moduleRunnerTransform: false
+      },
+      build: {
+        target: [ 'chrome107', 'edge107', 'firefox104', 'safari16' ],
+        polyfillModulePreload: true,
+        modulePreload: { polyfill: true },
+        outDir: 'dist',
+        assetsDir: 'assets',
+        assetsInlineLimit: 4096,
+        sourcemap: true,
+        terserOptions: {},
+        rollupOptions: { onwarn: [Function: onwarn] },
+        commonjsOptions: { include: [ /node_modules/ ], extensions: [ '.js', '.cjs' ] },
+        dynamicImportVarsOptions: { warnOnError: true, exclude: [ /node_modules/ ] },
+        write: true,
+        emptyOutDir: null,
+        copyPublicDir: true,
+        license: false,
+        manifest: false,
+        lib: false,
+        ssrManifest: false,
+        ssrEmitAssets: false,
+        reportCompressedSize: true,
+        chunkSizeWarningLimit: 500,
+        watch: null,
+        cssCodeSplit: true,
+        minify: 'esbuild',
+        ssr: false,
+        emitAssets: true,
+        createEnvironment: [Function: createEnvironment],
+        cssTarget: [ 'chrome107', 'edge107', 'firefox104', 'safari16' ],
+        cssMinify: true
+      },
+      plugins: [
+        {
+          name: 'vite:optimized-deps',
+          applyToEnvironment: [Function: applyToEnvironment],
+          resolveId: [Function: resolveId],
+          load: [AsyncFunction: load]
+        },
+        {
+          name: 'vite:watch-package-data',
+          buildStart: [Function: buildStart],
+          buildEnd: [Function: buildEnd],
+          watchChange: [Function: watchChange]
+        },
+        {
+          name: 'vite:pre-alias',
+          applyToEnvironment: [Function: applyToEnvironment],
+          resolveId: [AsyncFunction: resolveId]
+        },
+        {
+          name: 'alias',
+          buildStart: [AsyncFunction: buildStart],
+          resolveId: [Function: resolveId]
+        },
+        {
+          name: 'vite:react-babel',
+          enforce: 'pre',
+          config: [Function: config],
+          configResolved: [Function: configResolved],
+          options: [Function: options],
+          transform: {
+            filter: {
+              id: {
+                include: /\.[tj]sx?(?:\?.*)?$/,
+                exclude: [ /\/node_modules\// ]
+              }
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: 'vite:react-refresh',
+          enforce: 'pre',
+          config: [Function: config],
+          resolveId: {
+            filter: { id: /^\/@react\-refresh$/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: { id: /^\/@react\-refresh$/ },
+            handler: [Function: handler]
+          },
+          transformIndexHtml: [Function: transformIndexHtml]
+        },
+        {
+          name: 'vite:modulepreload-polyfill',
+          resolveId: {
+            filter: { id: /^vite\/modulepreload\-polyfill$/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: { id: /^ vite\/modulepreload\-polyfill\.js$/ },
+            handler: [Function: handler]
+          }
+        },
+        {
+          name: 'vite:resolve',
+          resolveId: {
+            filter: { id: { exclude: /^(?:\0|\/?virtual:)/ } },
+            handler: [AsyncFunction: handler]
+          },
+          load: {
+            filter: {
+              id: [
+                /^__vite\-browser\-external/,
+                /^__vite\-optional\-peer\-dep/
+              ]
+            },
+            handler: [Function: handler]
+          }
+        },
+        {
+          name: 'vite:html-inline-proxy',
+          resolveId: {
+            filter: { id: /[?&]html-proxy\b/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: { id: /[?&]html-proxy\b/ },
+            handler: [Function: handler]
+          }
+        },
+        {
+          name: 'vite:css',
+          buildStart: [Function: buildStart],
+          buildEnd: [Function: buildEnd],
+          load: {
+            filter: {
+              id: /\.(css|less|sass|scss|styl|stylus|pcss|postcss|sss)(?:$|\?)/
+            },
+            handler: [AsyncFunction: handler]
+          },
+          transform: {
+            filter: {
+              id: {
+                include: /\.(css|less|sass|scss|styl|stylus|pcss|postcss|sss)(?:$|\?)/,
+                exclude: [
+                  /[?&]commonjs-proxy/,
+                  /[?&](?:worker|sharedworker|raw|url)\b/
+                ]
+              }
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: 'vite:esbuild',
+          configureServer: [Function: configureServer],
+          transform: [AsyncFunction: transform]
+        },
+        {
+          name: 'vite:json',
+          transform: {
+            filter: {
+              id: {
+                include: /\.json(?:$|\?)(?!commonjs-(?:proxy|external))/,
+                exclude: /[?&](?:worker|sharedworker|raw|url)\b/
+              }
+            },
+            handler: [Function: handler]
+          }
+        },
+        {
+          name: 'vite:wasm-helper',
+          resolveId: {
+            filter: { id: /^ vite\/wasm\-helper\.js$/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: {
+              id: [
+                /^ vite\/wasm\-helper\.js$/,
+                /(?<![?#].*)\.wasm\?init/
+              ]
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: 'vite:worker',
+          buildStart: [Function: buildStart],
+          load: {
+            filter: { id: /(?:\?|&)(worker|sharedworker)(?:&|$)/ },
+            handler: [AsyncFunction: handler]
+          },
+          transform: {
+            filter: { id: /(?:\?|&)worker_file&type=(\w+)(?:&|$)/ },
+            handler: [AsyncFunction: handler]
+          },
+          renderChunk: [Function: renderChunk],
+          generateBundle: [Function: generateBundle],
+          watchChange: [Function: watchChange]
+        },
+        {
+          name: 'vite:asset',
+          perEnvironmentStartEndDuringDev: true,
+          buildStart: [Function: buildStart],
+          resolveId: { handler: [Function: handler] },
+          load: {
+            filter: { id: { exclude: /^\0/ } },
+            handler: [AsyncFunction: handler]
+          },
+          renderChunk: [Function: renderChunk],
+          generateBundle: [Function: generateBundle]
+        },
+        {
+          name: 'vite:wasm-fallback',
+          load: { filter: { id: /\.wasm$/ }, handler: [Function: handler] }
+        },
+        {
+          name: 'vite:define',
+          transform: { handler: [AsyncFunction: handler] }
+        },
+        {
+          name: 'vite:css-post',
+          renderStart: [Function: renderStart],
+          transform: {
+            filter: {
+              id: {
+                include: /\.(css|less|sass|scss|styl|stylus|pcss|postcss|sss)(?:$|\?)/,
+                exclude: [
+                  /[?&]commonjs-proxy/,
+                  /[?&](?:worker|sharedworker|raw|url)\b/
+                ]
+              }
+            },
+            handler: [AsyncFunction: handler]
+          },
+          renderChunk: [AsyncFunction: renderChunk],
+          augmentChunkHash: [Function: augmentChunkHash],
+          generateBundle: [AsyncFunction: generateBundle]
+        },
+        {
+          name: 'vite:worker-import-meta-url',
+          applyToEnvironment: [Function: applyToEnvironment],
+          transform: {
+            filter: {
+              code: /new\s+(?:Worker|SharedWorker)\s*\(\s*new\s+URL.+?import\.meta\.url/s
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: 'vite:asset-import-meta-url',
+          applyToEnvironment: [Function: applyToEnvironment],
+          transform: {
+            filter: {
+              id: {
+                exclude: [
+                  /^ vite\/preload\-helper\.js$/,
+                  /^\/workspaces\/alwafra\-web3\/node_modules\/vite\/dist\/client\/client\.mjs$/
+                ]
+              },
+              code: /new\s+URL.+import\.meta\.url/s
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: 'vite:dynamic-import-vars',
+          resolveId: {
+            filter: { id: /^ vite\/dynamic\-import\-helper\.js$/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: { id: /^ vite\/dynamic\-import\-helper\.js$/ },
+            handler: [Function: handler]
+          },
+          transform: {
+            filter: {
+              id: {
+                exclude: /^\/workspaces\/alwafra\-web3\/node_modules\/vite\/dist\/client\/client\.mjs$/
+              },
+              code: /\bimport\s*[(/]/
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: 'vite:import-glob',
+          buildStart: [Function: buildStart],
+          transform: {
+            filter: { code: 'import.meta.glob' },
+            handler: [AsyncFunction: handler]
+          },
+          hotUpdate: [Function: hotUpdate]
+        },
+        {
+          name: 'vite:client-inject',
+          buildStart: [AsyncFunction: buildStart],
+          transform: [AsyncFunction: transform]
+        },
+        {
+          name: 'vite:css-analysis',
+          transform: {
+            filter: {
+              id: {
+                include: /\.(css|less|sass|scss|styl|stylus|pcss|postcss|sss)(?:$|\?)/,
+                exclude: [
+                  /[?&]commonjs-proxy/,
+                  /[?&](?:worker|sharedworker|raw|url)\b/
+                ]
+              }
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: 'vite:import-analysis',
+          transform: [AsyncFunction: transform]
+        }
+      ]
+    },
+    ssr: {
+      define: undefined,
+      resolve: {
+        externalConditions: [ 'node', 'module-sync' ],
+        extensions: [
+          '.mjs',  '.js',
+          '.mts',  '.ts',
+          '.jsx',  '.tsx',
+          '.json'
+        ],
+        dedupe: [ 'react', 'react-dom' ],
+        noExternal: [],
+        external: [],
+        preserveSymlinks: false,
+        alias: [
+          {
+            find: /^\/?@vite\/env/,
+            replacement: '/@fs/workspaces/alwafra-web3/node_modules/vite/dist/client/env.mjs'
+          },
+          {
+            find: /^\/?@vite\/client/,
+            replacement: '/@fs/workspaces/alwafra-web3/node_modules/vite/dist/client/client.mjs'
+          }
+        ],
+        mainFields: [ 'module', 'jsnext:main', 'jsnext' ],
+        conditions: [ 'module', 'node', 'development|production' ],
+        builtins: [
+          '_http_agent',         '_http_client',        '_http_common',
+          '_http_incoming',      '_http_outgoing',      '_http_server',
+          '_stream_duplex',      '_stream_passthrough', '_stream_readable',
+          '_stream_transform',   '_stream_wrap',        '_stream_writable',
+          '_tls_common',         '_tls_wrap',           'assert',
+          'assert/strict',       'async_hooks',         'buffer',
+          'child_process',       'cluster',             'console',
+          'constants',           'crypto',              'dgram',
+          'diagnostics_channel', 'dns',                 'dns/promises',
+          'domain',              'events',              'fs',
+          'fs/promises',         'http',                'http2',
+          'https',               'inspector',           'inspector/promises',
+          'module',              'net',                 'os',
+          'path',                'path/posix',          'path/win32',
+          'perf_hooks',          'process',             'punycode',
+          'querystring',         'readline',            'readline/promises',
+          'repl',                'stream',              'stream/consumers',
+          'stream/promises',     'stream/web',          'string_decoder',
+          'sys',                 'timers',              'timers/promises',
+          'tls',                 'trace_events',        'tty',
+          'url',                 'util',                'util/types',
+          'v8',                  'vm',                  'wasi',
+          'worker_threads',      'zlib',                /^node:/,
+          /^bun:/
+        ]
+      },
+      keepProcessEnv: true,
+      consumer: 'server',
+      optimizeDeps: {
+        include: [],
+        exclude: [],
+        needsInterop: [],
+        extensions: [],
+        disabled: undefined,
+        holdUntilCrawlEnd: true,
+        force: false,
+        noDiscovery: true,
+        esbuildOptions: { preserveSymlinks: false }
+      },
+      dev: {
+        warmup: [],
+        sourcemap: { js: true },
+        sourcemapIgnoreList: [Function: isInNodeModules],
+        preTransformRequests: false,
+        createEnvironment: [Function: defaultCreateDevEnvironment],
+        recoverable: false,
+        moduleRunnerTransform: true
+      },
+      build: {
+        target: [ 'chrome107', 'edge107', 'firefox104', 'safari16' ],
+        polyfillModulePreload: true,
+        modulePreload: { polyfill: true },
+        outDir: 'dist',
+        assetsDir: 'assets',
+        assetsInlineLimit: 4096,
+        sourcemap: true,
+        terserOptions: {},
+        rollupOptions: { onwarn: [Function: onwarn] },
+        commonjsOptions: { include: [ /node_modules/ ], extensions: [ '.js', '.cjs' ] },
+        dynamicImportVarsOptions: { warnOnError: true, exclude: [ /node_modules/ ] },
+        write: true,
+        emptyOutDir: null,
+        copyPublicDir: true,
+        license: false,
+        manifest: false,
+        lib: false,
+        ssrManifest: false,
+        ssrEmitAssets: false,
+        reportCompressedSize: true,
+        chunkSizeWarningLimit: 500,
+        watch: null,
+        cssCodeSplit: true,
+        minify: false,
+        ssr: true,
+        emitAssets: false,
+        createEnvironment: [Function: createEnvironment],
+        cssTarget: [ 'chrome107', 'edge107', 'firefox104', 'safari16' ],
+        cssMinify: 'esbuild'
+      },
+      plugins: [
+        {
+          name: 'vite:watch-package-data',
+          buildStart: [Function: buildStart],
+          buildEnd: [Function: buildEnd],
+          watchChange: [Function: watchChange]
+        },
+        {
+          name: 'alias',
+          buildStart: [AsyncFunction: buildStart],
+          resolveId: [Function: resolveId]
+        },
+        {
+          name: 'vite:react-babel',
+          enforce: 'pre',
+          config: [Function: config],
+          configResolved: [Function: configResolved],
+          options: [Function: options],
+          transform: {
+            filter: {
+              id: {
+                include: /\.[tj]sx?(?:\?.*)?$/,
+                exclude: [ /\/node_modules\// ]
+              }
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: 'vite:react-refresh',
+          enforce: 'pre',
+          config: [Function: config],
+          resolveId: {
+            filter: { id: /^\/@react\-refresh$/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: { id: /^\/@react\-refresh$/ },
+            handler: [Function: handler]
+          },
+          transformIndexHtml: [Function: transformIndexHtml]
+        },
+        {
+          name: 'vite:modulepreload-polyfill',
+          resolveId: {
+            filter: { id: /^vite\/modulepreload\-polyfill$/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: { id: /^ vite\/modulepreload\-polyfill\.js$/ },
+            handler: [Function: handler]
+          }
+        },
+        {
+          name: 'vite:resolve',
+          resolveId: {
+            filter: { id: { exclude: /^(?:\0|\/?virtual:)/ } },
+            handler: [AsyncFunction: handler]
+          },
+          load: {
+            filter: {
+              id: [
+                /^__vite\-browser\-external/,
+                /^__vite\-optional\-peer\-dep/
+              ]
+            },
+            handler: [Function: handler]
+          }
+        },
+        {
+          name: 'vite:html-inline-proxy',
+          resolveId: {
+            filter: { id: /[?&]html-proxy\b/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: { id: /[?&]html-proxy\b/ },
+            handler: [Function: handler]
+          }
+        },
+        {
+          name: 'vite:css',
+          buildStart: [Function: buildStart],
+          buildEnd: [Function: buildEnd],
+          load: {
+            filter: {
+              id: /\.(css|less|sass|scss|styl|stylus|pcss|postcss|sss)(?:$|\?)/
+            },
+            handler: [AsyncFunction: handler]
+          },
+          transform: {
+            filter: {
+              id: {
+                include: /\.(css|less|sass|scss|styl|stylus|pcss|postcss|sss)(?:$|\?)/,
+                exclude: [
+                  /[?&]commonjs-proxy/,
+                  /[?&](?:worker|sharedworker|raw|url)\b/
+                ]
+              }
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: 'vite:esbuild',
+          configureServer: [Function: configureServer],
+          transform: [AsyncFunction: transform]
+        },
+        {
+          name: 'vite:json',
+          transform: {
+            filter: {
+              id: {
+                include: /\.json(?:$|\?)(?!commonjs-(?:proxy|external))/,
+                exclude: /[?&](?:worker|sharedworker|raw|url)\b/
+              }
+            },
+            handler: [Function: handler]
+          }
+        },
+        {
+          name: 'vite:wasm-helper',
+          resolveId: {
+            filter: { id: /^ vite\/wasm\-helper\.js$/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: {
+              id: [
+                /^ vite\/wasm\-helper\.js$/,
+                /(?<![?#].*)\.wasm\?init/
+              ]
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: 'vite:worker',
+          buildStart: [Function: buildStart],
+          load: {
+            filter: { id: /(?:\?|&)(worker|sharedworker)(?:&|$)/ },
+            handler: [AsyncFunction: handler]
+          },
+          transform: {
+            filter: { id: /(?:\?|&)worker_file&type=(\w+)(?:&|$)/ },
+            handler: [AsyncFunction: handler]
+          },
+          renderChunk: [Function: renderChunk],
+          generateBundle: [Function: generateBundle],
+          watchChange: [Function: watchChange]
+        },
+        {
+          name: 'vite:asset',
+          perEnvironmentStartEndDuringDev: true,
+          buildStart: [Function: buildStart],
+          resolveId: { handler: [Function: handler] },
+          load: {
+            filter: { id: { exclude: /^\0/ } },
+            handler: [AsyncFunction: handler]
+          },
+          renderChunk: [Function: renderChunk],
+          generateBundle: [Function: generateBundle]
+        },
+        {
+          name: 'vite:wasm-fallback',
+          load: { filter: { id: /\.wasm$/ }, handler: [Function: handler] }
+        },
+        {
+          name: 'vite:define',
+          transform: { handler: [AsyncFunction: handler] }
+        },
+        {
+          name: 'vite:css-post',
+          renderStart: [Function: renderStart],
+          transform: {
+            filter: {
+              id: {
+                include: /\.(css|less|sass|scss|styl|stylus|pcss|postcss|sss)(?:$|\?)/,
+                exclude: [
+                  /[?&]commonjs-proxy/,
+                  /[?&](?:worker|sharedworker|raw|url)\b/
+                ]
+              }
+            },
+            handler: [AsyncFunction: handler]
+          },
+          renderChunk: [AsyncFunction: renderChunk],
+          augmentChunkHash: [Function: augmentChunkHash],
+          generateBundle: [AsyncFunction: generateBundle]
+        },
+        {
+          name: 'vite:dynamic-import-vars',
+          resolveId: {
+            filter: { id: /^ vite\/dynamic\-import\-helper\.js$/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: { id: /^ vite\/dynamic\-import\-helper\.js$/ },
+            handler: [Function: handler]
+          },
+          transform: {
+            filter: {
+              id: {
+                exclude: /^\/workspaces\/alwafra\-web3\/node_modules\/vite\/dist\/client\/client\.mjs$/
+              },
+              code: /\bimport\s*[(/]/
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: 'vite:import-glob',
+          buildStart: [Function: buildStart],
+          transform: {
+            filter: { code: 'import.meta.glob' },
+            handler: [AsyncFunction: handler]
+          },
+          hotUpdate: [Function: hotUpdate]
+        },
+        {
+          name: 'vite:client-inject',
+          buildStart: [AsyncFunction: buildStart],
+          transform: [AsyncFunction: transform]
+        },
+        {
+          name: 'vite:css-analysis',
+          transform: {
+            filter: {
+              id: {
+                include: /\.(css|less|sass|scss|styl|stylus|pcss|postcss|sss)(?:$|\?)/,
+                exclude: [
+                  /[?&]commonjs-proxy/,
+                  /[?&](?:worker|sharedworker|raw|url)\b/
+                ]
+              }
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: 'vite:import-analysis',
+          transform: [AsyncFunction: transform]
+        }
+      ]
+    }
+  },
+  configFile: '/workspaces/alwafra-web3/vite.config.js',
+  configFileDependencies: [ '/workspaces/alwafra-web3/vite.config.js' ],
+  inlineConfig: {
+    root: undefined,
+    base: undefined,
+    mode: undefined,
+    configFile: undefined,
+    configLoader: undefined,
+    logLevel: undefined,
+    clearScreen: undefined,
+    server: { host: true, port: 3000 },
+    forceOptimizeDeps: undefined
+  },
+  root: '/workspaces/alwafra-web3',
+  base: '/',
+  decodedBase: '/',
+  rawBase: '/',
+  publicDir: '/workspaces/alwafra-web3/public',
+  cacheDir: '/workspaces/alwafra-web3/node_modules/.vite',
+  command: 'serve',
+  mode: 'development',
+  isWorker: false,
+  mainConfig: null,
+  bundleChain: [],
+  isProduction: false,
+  css: {
+    transformer: 'postcss',
+    preprocessorMaxWorkers: true,
+    devSourcemap: false
+  },
+  json: { namedExports: true, stringify: 'auto' },
+  builder: undefined,
+  preview: {
+    port: 4173,
+    strictPort: true,
+    host: true,
+    allowedHosts: [],
+    https: undefined,
+    open: false,
+    proxy: undefined,
+    cors: {
+      origin: /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/
+    },
+    headers: {}
+  },
+  envDir: '/workspaces/alwafra-web3',
+  env: { BASE_URL: '/', MODE: 'development', DEV: true, PROD: false },
+  assetsInclude: [Function: assetsInclude],
+  logger: {
+    hasWarned: false,
+    info: [Function: info],
+    warn: [Function: warn],
+    warnOnce: [Function: warnOnce],
+    error: [Function: error],
+    clearScreen: [Function: clearScreen],
+    hasErrorLogged: [Function: hasErrorLogged]
+  },
+  packageCache: Map(1) {
+    'fnpd_/workspaces/alwafra-web3' => {
+      dir: '/workspaces/alwafra-web3',
+      data: {
+        name: 'alwafra-web3',
+        private: true,
+        version: '1.0.0',
+        type: 'module',
+        scripts: {
+          dev: 'vite',
+          build: 'vite build',
+          preview: 'vite preview',
+          'deploy:contracts': 'hardhat run scripts/deploy.js --network sepolia'
+        },
+        dependencies: { ethers: '^5.7.2', react: '^18.2.0', 'react-dom': '^18.2.0' },
+        devDependencies: { '@vitejs/plugin-react': '^4.0.0', vite: '^7.3.0' }
+      },
+      hasSideEffects: [Function: hasSideEffects],
+      setResolvedCache: [Function: setResolvedCache],
+      getResolvedCache: [Function: getResolvedCache]
+    },
+    set: [Function (anonymous)]
+  },
+  worker: { format: 'iife', plugins: '() => plugins', rollupOptions: {} },
+  appType: 'spa',
+  experimental: {
+    importGlobRestoreExtension: false,
+    renderBuiltUrl: undefined,
+    hmrPartialAccept: false
+  },
+  future: undefined,
+  ssr: {
+    target: 'node',
+    optimizeDeps: {
+      esbuildOptions: { preserveSymlinks: false },
+      include: [],
+      exclude: [],
+      needsInterop: [],
+      extensions: [],
+      holdUntilCrawlEnd: true,
+      force: false,
+      noDiscovery: true
+    },
+    external: [],
+    noExternal: [],
+    resolve: {
+      conditions: [ 'module', 'node', 'development|production' ],
+      externalConditions: [ 'node', 'module-sync' ]
+    }
+  },
+  dev: {
+    warmup: [],
+    sourcemap: { js: true },
+    sourcemapIgnoreList: [Function: isInNodeModules],
+    preTransformRequests: false,
+    createEnvironment: [Function: defaultCreateDevEnvironment],
+    recoverable: false,
+    moduleRunnerTransform: false
+  },
+  webSocketToken: 'id3k1sO5dMJK',
+  getSortedPlugins: [Function: getSortedPlugins],
+  getSortedPluginHooks: [Function: getSortedPluginHooks],
+  createResolver: [Function: createResolver],
+  fsDenyGlob: [Function: arrayMatcher],
+  safeModulePaths: Set(0) {},
+  Symbol(vite:resolved-config): true
+}
+2026-01-02T10:45:03.682Z vite:deps (client) removing old cache dir /workspaces/alwafra-web3/node_modules/.vite/deps
+2026-01-02T10:45:03.689Z vite:resolve 2.48ms react -> /workspaces/alwafra-web3/node_modules/react/index.js
+2026-01-02T10:45:03.691Z vite:resolve 0.94ms react-dom -> /workspaces/alwafra-web3/node_modules/react-dom/index.js
+2026-01-02T10:45:03.691Z vite:resolve 0.38ms react/jsx-dev-runtime -> /workspaces/alwafra-web3/node_modules/react/jsx-dev-runtime.js
+2026-01-02T10:45:03.692Z vite:resolve 0.18ms react/jsx-runtime -> /workspaces/alwafra-web3/node_modules/react/jsx-runtime.js
+2026-01-02T10:45:03.693Z vite:deps scanning for dependencies...
+
+  VITE v7.3.0  ready in 204 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://10.0.2.176:3000/
+  ➜  press h + enter to show help
+2026-01-02T10:45:03.723Z vite:deps Crawling dependencies using entries: 
+  /workspaces/alwafra-web3/index.html
+  /workspaces/alwafra-web3/public/index.html
+2026-01-02T10:45:03.731Z vite:hmr [file change] server.log
+2026-01-02T10:45:03.734Z vite:hmr (client) [no modules matched] server.log
+2026-01-02T10:45:03.734Z vite:hmr (ssr) [no modules matched] server.log
+2026-01-02T10:45:03.743Z vite:deps ✨ static imports crawl ended
+2026-01-02T10:45:03.751Z vite:resolve 0.11ms /src/main.jsx -> /workspaces/alwafra-web3/src/main.jsx
+2026-01-02T10:45:03.755Z vite:resolve 0.36ms react -> /workspaces/alwafra-web3/node_modules/react/index.js
+2026-01-02T10:45:03.756Z vite:resolve 0.26ms react-dom/client -> /workspaces/alwafra-web3/node_modules/react-dom/client.js
+2026-01-02T10:45:03.756Z vite:resolve 0.08ms ./App.jsx -> /workspaces/alwafra-web3/src/App.jsx
+2026-01-02T10:45:03.758Z vite:resolve 0.18ms react/jsx-dev-runtime -> /workspaces/alwafra-web3/node_modules/react/jsx-dev-runtime.js
+2026-01-02T10:45:03.771Z vite:deps Scan completed in 77.25ms: 
+  react -> /workspaces/alwafra-web3/node_modules/react/index.js
+  react-dom/client -> /workspaces/alwafra-web3/node_modules/react-dom/client.js
+  react/jsx-dev-runtime -> /workspaces/alwafra-web3/node_modules/react/jsx-dev-runtime.js
+2026-01-02T10:45:03.772Z vite:deps creating package.json in /workspaces/alwafra-web3/node_modules/.vite/deps_temp_425add80
+2026-01-02T10:45:03.790Z vite:resolve 0.68ms react-dom -> /workspaces/alwafra-web3/node_modules/react-dom/index.js
+2026-01-02T10:45:03.790Z vite:resolve 0.72ms react -> /workspaces/alwafra-web3/node_modules/react/index.js
+2026-01-02T10:45:03.793Z vite:hmr [file change] server.log
+2026-01-02T10:45:03.793Z vite:hmr (client) [no modules matched] server.log
+2026-01-02T10:45:03.793Z vite:hmr (ssr) [no modules matched] server.log
+2026-01-02T10:45:03.833Z vite:resolve 0.44ms scheduler -> /workspaces/alwafra-web3/node_modules/scheduler/index.js
+2026-01-02T10:45:03.905Z vite:deps Dependencies bundled in 132.76ms
+2026-01-02T10:45:03.905Z vite:deps ✨ using post-scan optimizer result, the scanner found every used dependency
+2026-01-02T10:45:03.906Z vite:deps creating _metadata.json in /workspaces/alwafra-web3/node_modules/.vite/deps_temp_425add80
+2026-01-02T10:45:03.906Z vite:deps renaming /workspaces/alwafra-web3/node_modules/.vite/deps_temp_425add80 to /workspaces/alwafra-web3/node_modules/.vite/deps
+2026-01-02T10:45:03.907Z vite:deps ✨ dependencies optimized
+2026-01-02T10:45:03.908Z vite:hmr [file change] server.log
+2026-01-02T10:45:03.908Z vite:hmr (client) [no modules matched] server.log
+2026-01-02T10:45:03.908Z vite:hmr (ssr) [no modules matched] server.log
+2026-01-02T10:45:08.482Z vite:html-fallback Rewriting HEAD / to /index.html
+2026-01-02T10:45:08.485Z vite:hmr [file change] server.log
+2026-01-02T10:45:08.485Z vite:hmr (client) [no modules matched] server.log
+2026-01-02T10:45:08.486Z vite:hmr (ssr) [no modules matched] server.log
+2026-01-02T10:45:08.502Z vite:time 24.57ms /index.html
+2026-01-02T10:45:08.509Z vite:load 5.28ms [fs] /src/main.jsx
+2026-01-02T10:45:08.735Z vite:hmr [file change] server.log
+2026-01-02T10:45:08.735Z vite:hmr (client) [no modules matched] server.log
+2026-01-02T10:45:08.735Z vite:hmr (ssr) [no modules matched] server.log
+2026-01-02T10:45:08.738Z vite:resolve 0.39ms ./index.css -> /workspaces/alwafra-web3/src/index.css
+2026-01-02T10:45:08.738Z vite:resolve 0.54ms react/jsx-dev-runtime -> /workspaces/alwafra-web3/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=e310dc2e
+2026-01-02T10:45:08.738Z vite:resolve 0.50ms react -> /workspaces/alwafra-web3/node_modules/.vite/deps/react.js?v=e310dc2e
+2026-01-02T10:45:08.738Z vite:resolve 0.51ms react-dom/client -> /workspaces/alwafra-web3/node_modules/.vite/deps/react-dom_client.js?v=3cbcc4d8
+2026-01-02T10:45:08.740Z vite:import-analysis /node_modules/.vite/deps/react_jsx-dev-runtime.js?v=e310dc2e needs interop
+2026-01-02T10:45:08.741Z vite:import-analysis /node_modules/.vite/deps/react.js?v=e310dc2e needs interop
+2026-01-02T10:45:08.741Z vite:import-analysis /node_modules/.vite/deps/react-dom_client.js?v=3cbcc4d8 needs interop
+2026-01-02T10:45:08.742Z vite:optimize-deps load /workspaces/alwafra-web3/node_modules/.vite/deps/react_jsx-dev-runtime.js
+2026-01-02T10:45:08.742Z vite:optimize-deps load /workspaces/alwafra-web3/node_modules/.vite/deps/react.js
+2026-01-02T10:45:08.742Z vite:optimize-deps load /workspaces/alwafra-web3/node_modules/.vite/deps/react-dom_client.js
+2026-01-02T10:45:08.743Z vite:import-analysis 6.10ms [5 imports rewritten] src/main.jsx
+2026-01-02T10:45:08.746Z vite:transform 235.87ms /src/main.jsx
+2026-01-02T10:45:08.753Z vite:load 11.16ms [plugin] /node_modules/.vite/deps/react_jsx-dev-runtime.js?v=e310dc2e
+2026-01-02T10:45:08.757Z vite:resolve 0.13ms ./chunk-HP5KFSVP.js -> /workspaces/alwafra-web3/node_modules/.vite/deps/chunk-HP5KFSVP.js?v=7b2c8522
+2026-01-02T10:45:08.761Z vite:optimize-deps load /workspaces/alwafra-web3/node_modules/.vite/deps/chunk-HP5KFSVP.js
+2026-01-02T10:45:08.761Z vite:import-analysis 7.60ms [1 imports rewritten] node_modules/.vite/deps/react_jsx-dev-runtime.js?v=e310dc2e
+2026-01-02T10:45:08.761Z vite:transform 8.26ms /node_modules/.vite/deps/react_jsx-dev-runtime.js?v=e310dc2e
+2026-01-02T10:45:08.762Z vite:load 19.73ms [plugin] /node_modules/.vite/deps/react.js?v=e310dc2e
+2026-01-02T10:45:08.762Z vite:import-analysis 0.39ms [1 imports rewritten] node_modules/.vite/deps/react.js?v=e310dc2e
+2026-01-02T10:45:08.762Z vite:transform 0.64ms /node_modules/.vite/deps/react.js?v=e310dc2e
+2026-01-02T10:45:08.763Z vite:load 20.72ms [plugin] /node_modules/.vite/deps/react-dom_client.js?v=3cbcc4d8
+2026-01-02T10:45:08.763Z vite:resolve 0.09ms ./chunk-BRRIIXXD.js -> /workspaces/alwafra-web3/node_modules/.vite/deps/chunk-BRRIIXXD.js?v=7b2c8522
+2026-01-02T10:45:08.764Z vite:optimize-deps load /workspaces/alwafra-web3/node_modules/.vite/deps/chunk-BRRIIXXD.js
+2026-01-02T10:45:08.765Z vite:import-analysis 2.49ms [2 imports rewritten] node_modules/.vite/deps/react-dom_client.js?v=3cbcc4d8
+2026-01-02T10:45:08.765Z vite:transform 2.64ms /node_modules/.vite/deps/react-dom_client.js?v=3cbcc4d8
+2026-01-02T10:45:08.765Z vite:load 23.78ms [fs] /src/App.jsx
+2026-01-02T10:45:08.794Z vite:load 52.03ms [fs] /src/index.css
+2026-01-02T10:45:08.798Z vite:hmr [self-accepts] src/index.css
+2026-01-02T10:45:08.799Z vite:import-analysis 1.46ms [0 imports rewritten] src/index.css
+2026-01-02T10:45:08.799Z vite:transform 3.48ms /src/index.css
+2026-01-02T10:45:08.804Z vite:hmr [file change] server.log
+2026-01-02T10:45:08.804Z vite:hmr (client) [no modules matched] server.log
+2026-01-02T10:45:08.804Z vite:hmr (ssr) [no modules matched] server.log
+2026-01-02T10:45:08.806Z vite:resolve 0.34ms ./App.css -> /workspaces/alwafra-web3/src/App.css
+2026-01-02T10:45:08.807Z vite:import-analysis /node_modules/.vite/deps/react_jsx-dev-runtime.js?v=e310dc2e needs interop
+2026-01-02T10:45:08.807Z vite:import-analysis /node_modules/.vite/deps/react.js?v=e310dc2e needs interop
+2026-01-02T10:45:08.809Z vite:cache [memory] /node_modules/.vite/deps/react_jsx-dev-runtime.js?v=e310dc2e
+2026-01-02T10:45:08.812Z vite:cache [memory] /node_modules/.vite/deps/react.js?v=e310dc2e
+2026-01-02T10:45:08.812Z vite:hmr [self-accepts] src/App.jsx
+2026-01-02T10:45:08.812Z vite:load 0.34ms [plugin] /@react-refresh
+2026-01-02T10:45:08.812Z vite:import-analysis 7.62ms [4 imports rewritten] src/App.jsx
+2026-01-02T10:45:08.818Z vite:transform 52.45ms /src/App.jsx
+2026-01-02T10:45:08.820Z vite:import-analysis 0.55ms [0 imports rewritten] /@react-refresh
+2026-01-02T10:45:08.820Z vite:transform 7.97ms /@react-refresh
+2026-01-02T10:45:08.830Z vite:load 68.96ms [plugin] /node_modules/.vite/deps/chunk-HP5KFSVP.js?v=7b2c8522
+2026-01-02T10:45:08.833Z vite:import-analysis 2.84ms [no imports] node_modules/.vite/deps/chunk-HP5KFSVP.js?v=7b2c8522
+2026-01-02T10:45:08.834Z vite:transform 4.69ms [skipped] /node_modules/.vite/deps/chunk-HP5KFSVP.js?v=7b2c8522
+2026-01-02T10:45:08.839Z vite:load 74.69ms [plugin] /node_modules/.vite/deps/chunk-BRRIIXXD.js?v=7b2c8522
+2026-01-02T10:45:08.861Z vite:cache [memory] /node_modules/.vite/deps/chunk-HP5KFSVP.js?v=7b2c8522
+2026-01-02T10:45:08.861Z vite:import-analysis 13.99ms [1 imports rewritten] node_modules/.vite/deps/chunk-BRRIIXXD.js?v=7b2c8522
+2026-01-02T10:45:08.861Z vite:transform 22.29ms /node_modules/.vite/deps/chunk-BRRIIXXD.js?v=7b2c8522
+2026-01-02T10:45:08.873Z vite:load 61.25ms [fs] /src/App.css
+2026-01-02T10:45:08.874Z vite:hmr [self-accepts] src/App.css
+2026-01-02T10:45:08.874Z vite:import-analysis 0.43ms [0 imports rewritten] src/App.css
+2026-01-02T10:45:08.874Z vite:transform 1.03ms /src/App.css
+2026-01-02T10:45:08.875Z vite:hmr [file change] server.log
+2026-01-02T10:45:08.875Z vite:hmr (client) [no modules matched] server.log
+2026-01-02T10:45:08.875Z vite:hmr (ssr) [no modules matched] server.log
