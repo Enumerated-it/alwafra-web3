@@ -1,5 +1,58 @@
-node_modules
-node_modules
-node_modules
-node_modules
-node_modules
+# 🔐 .gitignore - ALWAFRA WEB3 - CONFORME SÉCURITÉ
+
+# 🔴 SECRETS & ENVIRONNEMENT
+.env
+.env.local
+.env*.local
+.env.production.local
+*.key
+*.pem
+*.p12
+.secrets
+
+# 📦 DÉPENDANCES
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+npm-debug.log*
+
+# 🔨 BUILD
+dist/
+build/
+out/
+.next/
+.vite/
+
+# 💻 IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# 🗂️ TEMPORAIRES
+*.log
+logs/
+*.tmp
+temp/
+~*
+*.bak
+
+# 🧪 TESTS
+coverage/
+.nyc_output/
+cypress/videos/
+cypress/screenshots/
+
+# 🔒 DONNÉES
+*.db
+*.sqlite
+*.sqlite3
+data/
+
+# 🚀 PLATEFORME
+.vercel
+.now
+dist/

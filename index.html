@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÉCOSYSTÈME ALWAFRA PROFUSION - APPLICATION ALWAFRA-CIVISME</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Écran d'Inscription ONU (apparaît d'abord) -->
+    <div id="inscriptionSection" class="inscription-container">
+        <div class="inscription-card">
+            <div class="inscription-header">
+                <h1>🌿 ALWAFRA PROFUSION</h1>
+                <h2>Registre Universel des Droits de l'Homme</h2>
+                <p>État civil marocaine numéro 964 R/1970 - Royaume du Maroc</p>
+            </div>
+            
+            <form id="inscriptionForm" class="inscription-form">
+                <div class="form-group">
+                    <label for="nomComplet"><i class="fas fa-user"></i> Nom & Prénom Complet</label>
+                    <input type="text" id="nomComplet" placeholder="Votre nom complet" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Adresse Email</label>
+                    <input type="email" id="email" placeholder="votre@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="docType"><i class="fas fa-id-card"></i> Statut Juridique (Conformité ONU)</label>
+                    <select id="docType" required>
+                        <option value="CIN">🇲🇦 Carte Nationale d'Identité (CIN)</option>
+                        <option value="PASSEPORT">🌍 Passeport International</option>
+                        <option value="SEJOUR">🛂 Carte de Séjour (Résident Étranger)</option>
+                        <option value="REFUGIE">🕊️ Carte de Réfugié / Apatride (HCR)</option>
+                        <option value="DETENU">⚖️ Matricule Pénitentiaire (Droit de Réinsertion)</option>
+                        <option value="PROTEGE">🛡️ Majeur Protégé (Tutelle/Curation)</option>
+                        <option value="CAN">💳 Carte d'Accès Nationale (CAN)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="docNum"><i class="fas fa-hashtag"></i> Numéro du Document</label>
+                    <input type="text" id="docNum" placeholder="Numéro du document d'identité" required>
+                </div>
+                
+                <div class="language-selection">
+                    <span>Sélectionnez votre langue :</span>
+                    <div class="lang-buttons">
+                        <button type="button" class="lang-btn active" data-lang="fr">🇫🇷 Français</button>
+                        <button type="button" class="lang-btn" data-lang="ar">🇲🇦 العربية</button>
+                        <button type="button" class="lang-btn" data-lang="en">🇬🇧 English</button>
+                    </div>
+                </div>
+                
+                <div class="terms">
+                    <input type="checkbox" id="acceptTerms" required>
+                    <label for="acceptTerms">J'accepte les <a href="#">Conditions Générales</a> et la <a href="#">Charte des Droits de l'Homme Numérique</a></label>
+                </div>
+                
+                <button type="submit" class="btn-inscription">
+                    <i class="fas fa-signature"></i> SIGNER LE REGISTRE UNIVERSEL
+                </button>
+            </form>
+            
+            <div class="inscription-footer">
+                <p>© 2025 ALWAFRA PROFUSION - Tous droits humains réservés</p>
+                <p>Système certifié ISO 27001 & Conforme RGPD/ONU</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Tableau de Bord (cachée au départ) -->
+    <div id="dashboardSection" style="display: none;">
+        <!-- Header avec navigation -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <div class="logo-icon">و</div>
+                    <div class="logo-text">
+                        <h1>ALWAFRA PROFUSION</h1>
+                        <p id="userStatus">Chargement...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="fr">FR</button>
+                    <button class="lang-btn" data-lang="ar">العربية</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">M</div>
+                    <div class="user-details">
+                        <span class="user-name" id="userName">Utilisateur</span>
+                        <span class="user-id" id="userId">ID: Chargement...</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- QR Code Section améliorée -->
+        <div class="qr-section">
+            <div class="qr-container">
+                <div class="qr-header">
+                    <h3><i class="fas fa-qrcode"></i> SYSTÈME QR CODE ALWAFRA</h3>
+                    <div class="qr-actions">
+                        <button class="btn-qr" onclick="montrerMonQR()">
+                            <i class="fas fa-id-card"></i> MON QR
+                        </button>
+                        <button class="btn-qr btn-scan" onclick="demarrerScanner()">
+                            <i class="fas fa-camera"></i> SCANNER (+1)
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="qr-display">
+                    <div class="qr-code-display" id="qrCodeDisplay">
+                        <!-- QR Code généré dynamiquement -->
+                    </div>
+                    <div class="qr-info">
+                        <p id="qrCodeValue">En attente de génération...</p>
+                        <small>Présentez ce code pour être scanné par d'autres utilisateurs</small>
+                    </div>
+                </div>
+                
+                <div class="qr-stats">
+                    <div class="stat">
+                        <i class="fas fa-user-friends"></i>
+                        <span>Scans reçus : <strong id="scansRecus">0</strong></span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-camera"></i>
+                        <span>Scans effectués : <strong id="scansEffectues">0</strong></span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-coins"></i>
+                        <span>Gains QR : <strong id="gainsQR">0 MAD</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard -->
+        <main class="dashboard">
+            <!-- Solde Principal avec compteur temps réel -->
+            <section class="balance-card">
+                <div class="balance-header">
+                    <h2><i class="fas fa-wallet"></i> VOTRE SOLDE EN TEMPS RÉEL</h2>
+                    <div class="balance-actions">
+                        <button class="btn-refresh" onclick="rafraichirSolde()">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                        <div class="production-indicator">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Production : <strong id="productionRate">150 MAD/h</strong></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="balance-amount">
+                    <span class="amount" id="mainBalance">0.00</span>
+                    <span class="currency">MAD</span>
+                </div>
+                
+                <div class="balance-timer">
+                    <div class="timer-display">
+                        <i class="fas fa-clock"></i>
+                        <span>Temps d'activité : <strong id="activityTime">00:00:00</strong></span>
+                    </div>
+                    <div class="earnings-display">
+                        <i class="fas fa-coins"></i>
+                        <span>Gains totaux : <strong id="totalEarnings">0.00 MAD</strong></span>
+                    </div>
+                </div>
+                
+                <div class="balance-details">
+                    <div class="detail-item">
+                        <span class="label">Régime :</span>
+                        <div class="regime-toggle">
+                            <button class="regime-btn active" data-regime="source">SOURCE (15%)</button>
+                            <button class="regime-btn" data-regime="declaratif">DÉCLARATIF</button>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Solde disponible :</span>
+                        <span class="value highlight" id="availableBalance">0.00 MAD</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- [Le reste de votre code dashboard reste identique] -->
+            <!-- Multi-Devises, Multi-Banques, Bot, Certificats, Archives -->
+            
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ALWAFRA PROFUSION</h4>
+                    <p>Écosystème d'abondance numérique</p>
+                    <p>État civil marocaine numéro 964 R/1970</p>
+                    <p>Conforme Charte ONU des Droits de l'Homme</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Certifications</h4>
+                    <p>ISO 27001:2022</p>
+                    <p>RGPD/CCPA Compliant</p>
+                    <p>Blockchain Ready</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Humanitaire</h4>
+                    <p><i class="fas fa-globe"></i> https://alwafra-civisme.vercel.app</p>
+                    <p><i class="fas fa-envelope"></i> humanrights@alwafra.ma</p>
+                    <p><i class="fas fa-phone"></i> +212 5 XX XX XX XX</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 ALWAFRA PROFUSION - Tous droits humains réservés.</p>
+                <p class="version">Version 3.0 HYBRIDE | DeepSeek + Gemini | Temps réel activé</p>
+                <p id="sessionTimer">Session : <span id="currentTimer">00:00:00</span></p>
+            </div>
+        </footer>
+
+        <!-- Modals -->
+        <div id="modalScanner" class="modal">
+            <div class="modal-content scanner-modal">
+                <div class="modal-header">
+                    <h3><i class="fas fa-camera"></i> SCANNER QR CODE</h3>
+                    <button class="modal-close" onclick="fermerScanner()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="scanner-view" id="scannerView">
+                        <div class="scanner-animation">
+                            <div class="laser"></div>
+                        </div>
+                        <p>Visez un QR Code Alwafra pour scanner</p>
+                    </div>
+                    <div class="scanner-result" id="scannerResult" style="display: none;">
+                        <div class="success-animation">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h4>SCAN RÉUSSI !</h4>
+                        <p>+1.00 MAD ajouté à votre solde</p>
+                        <p>Code scanné : <code id="scannedCode">ALW-XXX-XXXX</code></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="simulerScan()" class="btn-simulate">
+                        <i class="fas fa-bolt"></i> SIMULER SCAN (TEST)
+                    </button>
+                    <button onclick="fermerScanner()" class="btn-close">
+                        <i class="fas fa-times"></i> FERMER
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- [Les autres modals restent identiques] -->
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>

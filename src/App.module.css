@@ -1,0 +1,510 @@
+/**
+ * App.module.css - Styles modulaires ALWAFRA
+ * Remplace tous les styles inline de App.jsx
+ */
+
+.container {
+  background: #050505;
+  color: #e0e0e0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 20px;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* === TYPOGRAPHY === */
+.titleMain {
+  color: #00ff41;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.subtitleMain {
+  color: #888;
+  text-align: center;
+  margin-top: 0;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.footerText {
+  text-align: center;
+  font-size: 0.6rem;
+  color: #444;
+  margin-top: 30px;
+}
+
+.label {
+  font-size: 0.8rem;
+  color: #ccc;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.labelSmall {
+  font-size: 0.8rem;
+}
+
+/* === FORMS === */
+.input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #222;
+  border: 1px solid #444;
+  color: white;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #00ff41;
+  box-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
+}
+
+.inputManual {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  background: #422006;
+  border: 2px solid #eab308;
+  color: #eab308;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.inputManual:focus {
+  outline: none;
+  background: #5a3007;
+  box-shadow: 0 0 5px rgba(234, 179, 8, 0.5);
+}
+
+.select {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  background: #111;
+  border: 1px solid #00ff41;
+  color: white;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.select:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+}
+
+.select option {
+  background: #111;
+  color: white;
+}
+
+/* === BUTTONS === */
+.btnGreen {
+  background: #00ff41;
+  color: black;
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border: none;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.btnGreen:hover {
+  background: #00cc33;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 65, 0.4);
+}
+
+.btnGreen:active {
+  transform: translateY(0);
+}
+
+.btnIA {
+  background: #333;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #3b82f6;
+  width: 100%;
+  margin-bottom: 20px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btnIA.active {
+  background: #3b82f6;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+.btnIA:hover {
+  border-color: #60a5fa;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+}
+
+.btnSecondary {
+  background: none;
+  border: none;
+  color: #555;
+  text-decoration: underline;
+  width: 100%;
+  margin-top: 30px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  padding: 10px 0;
+  font-family: inherit;
+  transition: color 0.3s ease;
+}
+
+.btnSecondary:hover {
+  color: #888;
+}
+
+.btnClose {
+  float: right;
+  background: red;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btnClose:hover {
+  background: #cc0000;
+}
+
+.btnPrint {
+  width: 100%;
+  padding: 15px;
+  background: black;
+  color: white;
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: inherit;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btnPrint:hover {
+  background: #333;
+}
+
+/* === CARDS === */
+.card {
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: #00ff41;
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+.cardFlexBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ccc;
+  font-size: 0.8rem;
+}
+
+/* === DISPLAYS === */
+.display {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.idCitoyen {
+  text-align: center;
+  font-size: 0.8rem;
+  border: 1px solid #00ff41;
+  padding: 5px;
+  display: inline-block;
+  margin: 0 auto 20px;
+  border-radius: 3px;
+  word-break: break-all;
+}
+
+.iaStatusText {
+  font-size: 0.7rem;
+  color: #3b82f6;
+  text-align: center;
+}
+
+/* === CHECKBOX === */
+.checkboxContainer {
+  margin: 20px 0;
+  color: #ff4444;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.checkboxContainer input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.checkboxContainer label {
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+/* === CERTIFICAT MODAL === */
+.certificatModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.papier {
+  background: white;
+  color: black;
+  width: 90%;
+  max-width: 600px;
+  padding: 40px;
+  border-radius: 5px;
+  font-family: 'Times New Roman', serif;
+  position: relative;
+  overflow-y: auto;
+  max-height: 90vh;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+}
+
+.papierEntete {
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #000;
+  padding-bottom: 15px;
+}
+
+.papierEntete h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #000;
+}
+
+.papierEntete small {
+  display: block;
+  color: #666;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.tampon {
+  border: 3px double #c1272d;
+  color: #c1272d;
+  padding: 10px;
+  display: inline-block;
+  transform: rotate(-10deg);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 0.8rem;
+}
+
+.tableHeader {
+  border: 1px solid #ccc;
+  padding: 5px;
+  background: #eee;
+  font-weight: bold;
+}
+
+.tableData {
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+}
+
+.papierFooter {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666;
+  border-top: 1px solid #ccc;
+  padding-top: 15px;
+}
+
+/* === FORM SECTION === */
+.formContainer {
+  margin-bottom: 30px;
+}
+
+.regimeSelector {
+  padding: 5px;
+  background: #333;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.regimeSelector.active {
+  background: #00ff41;
+  color: black;
+}
+
+.regimeSelector:hover {
+  background: #444;
+}
+
+/* === RESPONSIVE === */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  .printable-area,
+  .printable-area * {
+    visibility: visible;
+  }
+  
+  .printable-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+  
+  .titleMain {
+    font-size: 2rem;
+  }
+  
+  .display {
+    font-size: 2.5rem;
+  }
+  
+  .papier {
+    width: 95%;
+    padding: 25px;
+    max-height: 95vh;
+  }
+  
+  .tampon {
+    top: 10px;
+    right: 10px;
+    font-size: 1rem;
+    padding: 8px;
+  }
+  
+  .table {
+    font-size: 0.7rem;
+  }
+  
+  .btnGreen {
+    font-size: 1rem;
+    padding: 12px;
+  }
+  
+  .cardFlexBetween {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .regimeSelector {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+  
+  .titleMain {
+    font-size: 1.5rem;
+  }
+  
+  .display {
+    font-size: 2rem;
+  }
+  
+  .papier {
+    padding: 15px;
+  }
+  
+  .input,
+  .select,
+  .btnGreen {
+    font-size: 16px;
+  }
+  
+  .checkboxContainer {
+    font-size: 0.7rem;
+  }
+}

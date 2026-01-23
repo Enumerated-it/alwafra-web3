@@ -1,11 +1,450 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
+import './App.css';
 
-export default function App() {
+// --- CONFIGURATION ---
+const FONDATEUR = "MR MOHAMED MORCHID (964 R/1970)";
+const MAX_MONTHLY_REVENUE = 50000;
+
+const TAUX_CHANGE = {
+  "MAD": 1, "USD": 10.5, "EUR": 11.2, "GBP": 13.4, "CAD": 7.8,
+  "SAR": 2.8, "AED": 2.9, "USDT": 10.6, "E2 (Polygon)": 5.5,
+  "BTC": 980000, "ETH": 35000
+};
+
+// AXIOME : Base 7 + Droit Caché 3.5 = 10.5 MAD/min (INTOUCHABLE ✓)
+const VALEUR_BASE_MINUTE = 7.00;
+const VALEUR_CACHE_MINUTE = 3.50;
+const COUT_OUTIL_IA = 1.50;
+
+// ===== UTILITAIRES =====
+const genererID = (nom) => {
+  try {
+    const clean = nom.substring(0, 3).toUpperCase().replace(/[^A-Z0-9]/g, '');
+    const random = Math.floor(Math.random() * 10000);
+    return `ALW-${clean}-${random}-PROFUSION`;
+  } catch {
+    return `ALW-USR-${Date.now()}-PROFUSION`;
+  }
+};
+
+const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+const safeLocalStorage = {
+  getItem: (key, defaultValue = null) => {
+    try {
+      const item = localStorage.getItem(key);
+      return item ? JSON.parse(item) : defaultValue;
+    } catch (e) {
+      console.error('❌ localStorage.getItem error:', e);
+      return defaultValue;
+    }
+  },
+  setItem: (key, value) => {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+      return true;
+    } catch (e) {
+      console.error('❌ localStorage.setItem error:', e);
+      return false;
+    }
+  },
+  clear: () => {
+    try {
+      localStorage.clear();
+      return true;
+    } catch (e) {
+      console.error('❌ localStorage.clear error:', e);
+      return false;
+    }
+  }
+};
+
+// ===== COMPOSANT PRINCIPAL =====
+function App() {
+  // --- ÉTATS ---
+  const [form, setForm] = useState({ nom: "", email: "", docType: "CIN", docNum: "" });
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [idCitoyen, setIdCitoyen] = useState("");
+  const [brut, setBrut] = useState(0.00);
+  
+  const [detteOutil, setDetteOutil] = useState(0.00);
+  const [isUsingIA, setIsUsingIA] = useState(false);
+  const [choixBanque, setChoixBanque] = useState("CARTE ALWAFRA");
+  const [banqueManuelle, setBanqueManuelle] = useState("");
+  const [choixDevise, setChoixDevise] = useState("MAD");
+  const [prelevementSource, setPrelevementSource] = useState(true);
+  const [showCertificat, setShowCertificat] = useState(false);
+  const [certifieHonneur, setCertifieHonneur] = useState(false);
+
+  // --- INITIALISATION (CHARGER DEPUIS localStorage) ---
+  useEffect(() => {
+    console.log('🔵 INIT: Loading data from localStorage');
+    try {
+      const savedUser = safeLocalStorage.getItem('alwafra_user');
+      const savedRegistered = safeLocalStorage.getItem('alwafra_is_reg', false);
+      const savedID = safeLocalStorage.getItem('alwafra_id', "");
+      const savedBrut = safeLocalStorage.getItem('alwafra_brut', 0.00);
+
+      console.log('🟡 INIT: Loaded data:', { savedUser, savedRegistered, savedID, savedBrut });
+
+      if (savedUser) {
+        setForm(savedUser);
+        console.log('🟡 INIT: Set form from storage');
+      }
+      if (savedID) {
+        setIdCitoyen(savedID);
+        console.log('🟡 INIT: Set ID from storage:', savedID);
+      }
+      if (savedBrut) {
+        setBrut(savedBrut);
+        console.log('🟡 INIT: Set brut from storage:', savedBrut);
+      }
+      
+      // IMPORTANT: Mettre à jour l'état d'inscription
+      if (savedRegistered === true || savedRegistered === 'true') {
+        console.log('🟢 INIT: Setting isRegistered to TRUE');
+        setIsRegistered(true);
+      }
+    } catch (e) {
+      console.error('❌ Initialization error:', e);
+    }
+  }, []);
+
+  // --- ACCUMULATION DE REVENU (CHAQUE SECONDES) ---
+  useEffect(() => {
+    if (!isRegistered) {
+      console.log('⏸️  Revenue accumulation: isRegistered is FALSE');
+      return;
+    }
+
+    console.log('▶️  Revenue accumulation: STARTED');
+    const interval = setInterval(() => {
+      try {
+        setBrut(prev => {
+          let gain = VALEUR_BASE_MINUTE / 60; // Gain base par seconde
+          let gainCache = VALEUR_CACHE_MINUTE / 60; // Droit caché par seconde
+
+          if (isUsingIA) {
+            const coutIA = COUT_OUTIL_IA / 60;
+            gainCache -= coutIA;
+            setDetteOutil(d => d + coutIA);
+          }
+
+          const newBrut = Math.min(prev + gain + gainCache, MAX_MONTHLY_REVENUE);
+          safeLocalStorage.setItem('alwafra_brut', newBrut);
+          return newBrut;
+        });
+      } catch (e) {
+        console.error('❌ Revenue calculation error:', e);
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+      console.log('⏹️  Revenue accumulation: STOPPED');
+    };
+  }, [isRegistered, isUsingIA]);
+
+  // --- VALIDATION ET INSCRIPTION ---
+  const validerInscription = (e) => {
+    e.preventDefault();
+    console.log('🔵 START Inscription validation');
+    console.log('📋 Form data:', form);
+    console.log('✅ Certifie Honneur:', certifieHonneur);
+
+    // Validation
+    if (!form.nom || form.nom.length < 3) {
+      console.error('❌ Nom invalide');
+      alert('❌ Le nom doit avoir au moins 3 caractères');
+      return;
+    }
+    if (!validateEmail(form.email)) {
+      console.error('❌ Email invalide:', form.email);
+      alert('❌ Email invalide. Format: user@example.com');
+      return;
+    }
+    if (!form.docNum) {
+      console.error('❌ Numéro document manquant');
+      alert('❌ Numéro de document requis');
+      return;
+    }
+    if (!certifieHonneur) {
+      console.error('❌ Conditions non acceptées');
+      alert('⚠️ Vous devez accepter les conditions');
+      return;
+    }
+
+    console.log('🟡 All validations passed');
+
+    try {
+      const newID = genererID(form.nom);
+      console.log('🟡 Generated ID:', newID);
+
+      // Sauvegarder
+      console.log('🟡 Saving to localStorage...');
+      const saved1 = safeLocalStorage.setItem('alwafra_user', form);
+      const saved2 = safeLocalStorage.setItem('alwafra_id', newID);
+      const saved3 = safeLocalStorage.setItem('alwafra_is_reg', true);
+      const saved4 = safeLocalStorage.setItem('alwafra_brut', 0);
+
+      console.log('🟡 Save results:', { saved1, saved2, saved3, saved4 });
+
+      if (!saved1 || !saved2 || !saved3 || !saved4) {
+        throw new Error('Erreur sauvegarde localStorage');
+      }
+
+      console.log('🟢 All data saved successfully');
+
+      // Mettre à jour les états
+      console.log('🟡 Setting states...');
+      setIdCitoyen(newID);
+      setBrut(0);
+      setIsRegistered(true);
+
+      console.log('✅ INSCRIPTION COMPLETE');
+      console.log('🟢 isRegistered should now be TRUE');
+
+    } catch (error) {
+      console.error('❌ Inscription error:', error);
+      alert('❌ Erreur inscription: ' + error.message);
+    }
+  };
+
+  // --- CORRECTION DU DOSSIER ---
+  const corrigerDossier = () => {
+    if (confirm('Êtes-vous sûr? Cela réinitialisera TOUT.')) {
+      try {
+        safeLocalStorage.clear();
+        setForm({ nom: "", email: "", docType: "CIN", docNum: "" });
+        setIdCitoyen("");
+        setIsRegistered(false);
+        setBrut(0);
+        setDetteOutil(0);
+        setIsUsingIA(false);
+        setCertifieHonneur(false);
+        console.log('🟢 Cleared all data');
+      } catch (e) {
+        console.error('❌ Clear error:', e);
+      }
+    }
+  };
+
+  // --- CALCULS FINANCIERS (IMMUABLES) ---
+  const impot = prelevementSource ? (brut * 0.15) : 0.00;
+  const service = brut * 0.30;
+  const net = brut - impot - service;
+  const netConverti = (net / TAUX_CHANGE[choixDevise]).toFixed(4);
+  const banqueFinale = choixBanque === "AUTRE" ? banqueManuelle.toUpperCase() : choixBanque;
+  const imprimerPreuve = () => window.print();
+
+  console.log('🔍 RENDER: isRegistered =', isRegistered, '| idCitoyen =', idCitoyen);
+
+  // ===== RENDU =====
+  if (!isRegistered) {
+    return (
+      <div className="app-container">
+        <div className="inscription-container">
+          <div className="inscription-header">
+            <h2 className="inscription-title">ALWAFRA PROFUSION</h2>
+            <h4 className="inscription-subtitle">Registre Universel des Droits de l'Homme</h4>
+            <p className="inscription-founder">{FONDATEUR} - Royaume du Maroc</p>
+          </div>
+
+          <form className="inscription-form" onSubmit={validerInscription}>
+            <div className="form-group">
+              <label className="form-label">Nom & Prénom Complet</label>
+              <input
+                className="form-input"
+                type="text"
+                value={form.nom}
+                onChange={(e) => setForm({ ...form, nom: e.target.value })}
+                placeholder="Votre nom complet"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Adresse Email</label>
+              <input
+                className="form-input"
+                type="email"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                placeholder="votre@email.com"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Statut Juridique</label>
+              <select
+                className="form-select"
+                value={form.docType}
+                onChange={(e) => setForm({ ...form, docType: e.target.value })}
+              >
+                <option value="CIN">Carte Nationale d'Identité (CIN)</option>
+                <option value="SEJOUR">Carte de Séjour</option>
+                <option value="PASSEPORT">Passeport</option>
+                <option value="REFUGIE">Carte Réfugié / Apatride</option>
+                <option value="DETENU">Matricule Pénitentiaire</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Numéro du Document</label>
+              <input
+                className="form-input"
+                type="text"
+                value={form.docNum}
+                onChange={(e) => setForm({ ...form, docNum: e.target.value })}
+                placeholder="Numéro de document"
+                required
+              />
+            </div>
+
+            <div className="form-checkbox-group">
+              <input
+                type="checkbox"
+                id="certifie"
+                checked={certifieHonneur}
+                onChange={(e) => setCertifieHonneur(e.target.checked)}
+                required
+              />
+              <label htmlFor="certifie">
+                J'accepte les Conditions Générales et je certifie sur l'honneur l'exactitude de ma déclaration.
+              </label>
+            </div>
+
+            <button type="submit" className="btn-submit">SIGNER LE REGISTRE UNIVERSEL</button>
+          </form>
+
+          <p className="inscription-footer">
+            ALWAFRA PROFUSION - Tous droits humains réservés 2025 ©<br/>
+            Système certifié ISO 27001 & Conforme RGPD/ONU
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // ===== TABLEAU DE BORD =====
   return (
-    <div style={{ padding: '2rem', textAlign: 'center' }}>
-      <h1>Alwafra Web3 - Test</h1>
-      <p>Application de test fonctionnelle</p>
-      <p>Serveur Vite en cours d'exécution</p>
+    <div className="app-container">
+      {showCertificat && (
+        <div className="modal-certificat">
+          <div className="modal-content printable-area">
+            <button className="modal-close no-print" onClick={() => setShowCertificat(false)}>✕</button>
+            
+            <div className="modal-header">
+              <h1>CERTIFICAT D'ORIGINE</h1>
+              <small>Royaume du Maroc - Système Alwafra</small>
+            </div>
+            
+            <div className="modal-stamp">VALIDÉ</div>
+            
+            <p><strong>BÉNÉFICIAIRE :</strong> {form.nom.toUpperCase()}</p>
+            <p><strong>IDENTIFIANT ({form.docType}) :</strong> {form.docNum}</p>
+            
+            <hr/>
+            
+            <p>Brut Total : {brut.toFixed(2)} MAD</p>
+            <p style={{fontSize: '0.8rem', color: '#666'}}>Dont remb. Outil IA : -{detteOutil.toFixed(2)} MAD</p>
+            <p>(-) Impôt (15%) : {impot.toFixed(2)} MAD</p>
+            <p>(-) Commission (30%) : {service.toFixed(2)} MAD</p>
+            <h2 style={{background: '#eee', padding: '10px', textAlign: 'center'}}>NET : {netConverti} {choixDevise}</h2>
+            <p><strong>DESTINATION :</strong> {banqueFinale}</p>
+            
+            <hr/>
+            
+            <table className="modal-table">
+              <thead>
+                <tr>
+                  <th>Devise</th>
+                  <th>Taux</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.entries(TAUX_CHANGE).map(([k, v]) => (
+                  <tr key={k}>
+                    <td>{k}</td>
+                    <td>{v}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            
+            <div className="modal-footer">{FONDATEUR}</div>
+            <button className="btn-print no-print" onClick={imprimerPreuve}>🖨️ PDF</button>
+          </div>
+        </div>
+      )}
+
+      <div className="dashboard-container">
+        <div className="dashboard-header">
+          <h2 className="dashboard-title">ALWAFRA APP</h2>
+          <div className="dashboard-id">{idCitoyen}</div>
+        </div>
+
+        <div className="card">
+          <div className="card-display">{net.toFixed(2)} MAD</div>
+          
+          <button
+            className={`btn-toggle ${isUsingIA ? 'active' : ''}`}
+            onClick={() => setIsUsingIA(!isUsingIA)}
+          >
+            {isUsingIA ? '🟢 IA ACTIVE (Mode Profusion)' : '⚪ IA DÉSACTIVÉE'}
+          </button>
+          
+          {isUsingIA && <div className="ia-status">Coût Outil : 1.50 MAD/min (Déduit du Droit Caché)</div>}
+        </div>
+
+        <div className="card">
+          <div className="card-flex">
+            <span>RÉGIME :</span>
+            <button
+              className={`regime-selector ${prelevementSource ? 'active' : ''}`}
+              onClick={() => setPrelevementSource(!prelevementSource)}
+            >
+              {prelevementSource ? 'SOURCE (15% impôt)' : 'DÉCLARATIF (0%)'}
+            </button>
+          </div>
+        </div>
+
+        <div className="choice-form">
+          <label className="form-label">Devises Supportées :</label>
+          <select className="choice-select" onChange={(e) => setChoixDevise(e.target.value)} value={choixDevise}>
+            {Object.keys(TAUX_CHANGE).map(d => (
+              <option key={d} value={d}>{d}</option>
+            ))}
+          </select>
+
+          <label className="form-label">Mode de Paiement :</label>
+          <select className="choice-select" value={choixBanque} onChange={(e) => setChoixBanque(e.target.value)}>
+            <option>CARTE ALWAFRA</option>
+            <option>CIH BANK</option>
+            <option>CASH PLUS</option>
+            <option>AUTRE</option>
+          </select>
+
+          {choixBanque === "AUTRE" && (
+            <input
+              className="choice-input-manual"
+              placeholder="Entrez le nom de la banque..."
+              onChange={(e) => setBanqueManuelle(e.target.value)}
+            />
+          )}
+
+          <button className="btn-generate" onClick={() => setShowCertificat(true)}>
+            GÉNÉRER LE JUSTIFICATIF
+          </button>
+
+          <button className="btn-correction" onClick={corrigerDossier}>
+            ✏️ Erreur de saisie ? Corriger mon dossier
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
+
+export default App;

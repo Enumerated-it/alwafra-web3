@@ -1,3 +1,599 @@
-.App {
+/* =============================================
+   ALWAFRA-WEB3 - App.css
+   Design moderne, responsive, maintainable
+   ============================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #050505;
+  color: #e0e0e0;
+}
+
+/* ========== CONTENEUR PRINCIPAL ========== */
+.app-container {
+  background: #050505;
+  color: #e0e0e0;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ========== FORMULAIRE D'INSCRIPTION ========== */
+.inscription-container {
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.inscription-header {
   text-align: center;
+  margin-bottom: 30px;
+}
+
+.inscription-title {
+  color: #00ff41;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.inscription-subtitle {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.inscription-founder {
+  text-align: center;
+  font-size: 0.7rem;
+  color: #555;
+}
+
+.inscription-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 0.8rem;
+  color: #ccc;
+  font-weight: 500;
+}
+
+.form-input,
+.form-select {
+  padding: 12px;
+  background: #222;
+  border: 1px solid #444;
+  color: white;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #00ff41;
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.3);
+  background: #2a2a2a;
+}
+
+.form-input::placeholder {
+  color: #666;
+}
+
+.form-select option {
+  background: #111;
+  color: white;
+}
+
+.form-checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 20px 0;
+  color: #ff4444;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.form-checkbox-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  cursor: pointer;
+  flex-shrink: 0;
+  accent-color: #00ff41;
+}
+
+.form-checkbox-group label {
+  cursor: pointer;
+}
+
+.btn-submit {
+  background: #00ff41;
+  color: black;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-submit:hover {
+  background: #00cc33;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 65, 0.4);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+.inscription-footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.6rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* ========== TABLEAU DE BORD ========== */
+.dashboard-container {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-title {
+  color: #00ff41;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.dashboard-id {
+  text-align: center;
+  font-size: 0.8rem;
+  border: 1px solid #00ff41;
+  padding: 8px 15px;
+  display: inline-block;
+  margin: 0 auto 20px;
+  border-radius: 3px;
+  word-break: break-all;
+  background: rgba(0, 255, 65, 0.1);
+}
+
+/* ========== CARDS ========== */
+.card {
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: #00ff41;
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+.card-display {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #00ff41;
+}
+
+.card-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ccc;
+  font-size: 0.8rem;
+}
+
+.btn-toggle {
+  padding: 8px 15px;
+  background: #333;
+  color: white;
+  border: 1px solid #3b82f6;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-toggle:hover {
+  border-color: #60a5fa;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+}
+
+.btn-toggle.active {
+  background: #3b82f6;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+.ia-status {
+  font-size: 0.7rem;
+  color: #3b82f6;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.regime-selector {
+  padding: 5px 10px;
+  background: #333;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.regime-selector.active {
+  background: #00ff41;
+  color: black;
+}
+
+.regime-selector:hover {
+  background: #444;
+}
+
+/* ========== FORMULAIRE CHOIX ========== */
+.choice-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.choice-select {
+  padding: 12px;
+  background: #111;
+  border: 1px solid #00ff41;
+  color: white;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.choice-select:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+}
+
+.choice-select option {
+  background: #111;
+  color: white;
+}
+
+.choice-input-manual {
+  padding: 12px;
+  background: #422006;
+  border: 2px solid #eab308;
+  color: #eab308;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.choice-input-manual:focus {
+  outline: none;
+  background: #5a3007;
+  box-shadow: 0 0 5px rgba(234, 179, 8, 0.5);
+}
+
+.btn-generate {
+  background: #00ff41;
+  color: black;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn-generate:hover {
+  background: #00cc33;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 65, 0.4);
+}
+
+.btn-correction {
+  background: none;
+  border: none;
+  color: #555;
+  text-decoration: underline;
+  width: 100%;
+  margin-top: 30px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  padding: 10px 0;
+  font-family: inherit;
+  transition: color 0.3s ease;
+}
+
+.btn-correction:hover {
+  color: #888;
+}
+
+/* ========== MODAL CERTIFICAT ========== */
+.modal-certificat {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.modal-content {
+  background: white;
+  color: black;
+  width: 90%;
+  max-width: 600px;
+  padding: 40px;
+  border-radius: 5px;
+  font-family: 'Times New Roman', serif;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: red;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: #cc0000;
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #000;
+  padding-bottom: 15px;
+}
+
+.modal-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #000;
+}
+
+.modal-header small {
+  display: block;
+  color: #666;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.modal-stamp {
+  border: 3px double #c1272d;
+  color: #c1272d;
+  padding: 10px;
+  display: inline-block;
+  transform: rotate(-10deg);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.modal-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 0.8rem;
+}
+
+.modal-table th,
+.modal-table td {
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+}
+
+.modal-table th {
+  background: #eee;
+  font-weight: bold;
+}
+
+.modal-footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666;
+  border-top: 1px solid #ccc;
+  padding-top: 15px;
+}
+
+.btn-print {
+  width: 100%;
+  padding: 15px;
+  background: black;
+  color: white;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: inherit;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-print:hover {
+  background: #333;
+}
+
+.no-print {
+  print: none !important;
+}
+
+/* ========== IMPRESSION ========== */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  .printable-area,
+  .printable-area * {
+    visibility: visible;
+  }
+  
+  .printable-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* ========== RESPONSIVE TABLETTES (768px) ========== */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 15px;
+  }
+  
+  .inscription-title,
+  .dashboard-title {
+    font-size: 2rem;
+  }
+  
+  .card-display {
+    font-size: 2.5rem;
+  }
+  
+  .modal-content {
+    width: 95%;
+    padding: 25px;
+    max-height: 95vh;
+  }
+  
+  .modal-stamp {
+    top: 10px;
+    right: 10px;
+    font-size: 1rem;
+    padding: 8px;
+  }
+  
+  .modal-table {
+    font-size: 0.7rem;
+  }
+  
+  .card-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .btn-toggle {
+    width: 100%;
+  }
+}
+
+/* ========== RESPONSIVE MOBILES (480px) ========== */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 10px;
+  }
+  
+  .inscription-title,
+  .dashboard-title {
+    font-size: 1.5rem;
+  }
+  
+  .card-display {
+    font-size: 2rem;
+  }
+  
+  .modal-content {
+    width: 98%;
+    padding: 15px;
+    max-height: 95vh;
+  }
+  
+  .form-input,
+  .form-select,
+  .choice-select,
+  .choice-input-manual,
+  .btn-submit,
+  .btn-generate {
+    font-size: 16px;
+  }
+  
+  .form-checkbox-group {
+    font-size: 0.7rem;
+  }
+  
+  .modal-header h1 {
+    font-size: 1.3rem;
+  }
+  
+  .modal-table {
+    font-size: 0.65rem;
+  }
+  
+  .inscription-subtitle,
+  .inscription-founder {
+    font-size: 0.7rem;
+  }
 }

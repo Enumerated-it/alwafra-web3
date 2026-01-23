@@ -1,0 +1,29 @@
+🎬 DÉMARRAGE EN 3 ÉTAPES
+
+═══════════════════════════════════
+
+📌 ÉTAPE 1 : Installation (5 min)
+```
+.\phase1-setup.ps1
+```
+
+📌 ÉTAPE 2 : GitHub (10 min)
+```
+.\github-vercel-deploy.ps1
+```
+
+📌 ÉTAPE 3 : Vercel (5 min)
+```
+https://vercel.com/new
+→ alwafra-web3
+→ Add 5 variables
+→ Deploy
+```
+
+═══════════════════════════════════
+
+✅ RÉSULTAT: alwafra-web3.vercel.app
+
+⏱️  TEMPS TOTAL: 30 minutes
+
+🚀 Allez-y !
